@@ -9,12 +9,17 @@ namespace Api.Service.Services
 {
   public class UserService : IUserService
   {
-    private readonly IRepository<UserEntity> _repository;
+    private IRepository<UserEntity> _repository;
 
     public UserService(IRepository<UserEntity> repository)
     {
       _repository = repository;
     }
+
+    //public UserService()
+    //{
+
+    //}
 
     public async Task<bool> Delete(Guid id)
     {

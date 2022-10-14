@@ -13,7 +13,7 @@ namespace Api.Data.Repository
     protected readonly MyContext _context;
     private DbSet<T> _dataset;
 
-    public BaseRepository(MyContext context, DbSet<T> dataset)
+    public BaseRepository(MyContext context)
     {
       _context = context;
       _dataset = _context.Set<T>();
@@ -24,6 +24,7 @@ namespace Api.Data.Repository
       try
       {
         var result = await _dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));
+
         if (result == null)
         {
           return false;
